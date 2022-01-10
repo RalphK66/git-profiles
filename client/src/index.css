@@ -1,0 +1,28 @@
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+.app .app > div {
+  min-height: 100% !important;
+  height: 100%;
+}
+footer {
+  text-align: center;
+  color: #959597;
+  font-size: small;
+}
+
+.layout {
+  background: radial-gradient(
+    at top left,
+    rgb(53, 60, 65) 0%,
+    rgb(5, 4, 7) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none !important;
+}

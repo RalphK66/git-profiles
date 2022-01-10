@@ -1,0 +1,16 @@
+.clearBtn {
+  background-color: darkred !important;
+  border: none !important;
+  margin-bottom: 40px;
+}
+
+.errorStyle {
+  color: rgb(190, 0, 0);
+}
+.inputStyle {
+  border: 1px solid transparent;
+}
+.btn {
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}

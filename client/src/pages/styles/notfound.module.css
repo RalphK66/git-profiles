@@ -1,0 +1,12 @@
+.notfound {
+  color: white;
+}
+
+.notfound > h1 {
+  font-size: 4rem;
+}
+
+.notfound > p {
+  font-size: 1rem;
+  color: rgb(211, 211, 5);
+}

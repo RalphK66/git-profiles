@@ -1,0 +1,11 @@
+.navBrand {
+  color: rgb(64, 120, 192) !important;
+  font-size: 200%;
+  font-family: Gotham, sans-serif;
+}
+
+.navBrand::first-letter {
+  font-weight: 400;
+  font-size: 120%;
+  color: rgb(79, 149, 241);
+}

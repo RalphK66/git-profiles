@@ -1,0 +1,10 @@
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 80px;
+  width: 80px;
+  z-index: 999;
+  border: 0.5em solid rgb(79, 149, 241) !important ;
+  border-right-color: transparent  !important;
+}
