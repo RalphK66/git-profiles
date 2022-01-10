@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { parsePageLink } from '../utils/util'
-const GITHUB_URL = process.env.REACT_APP_GITHUB_URL
+const GITHUB_URL = "https://api.github.com"
 
 const github = async (token) => {
   const headers = token ? { Authorization: `Bearer ${token}` } : {}
