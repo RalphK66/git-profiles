@@ -5,12 +5,14 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "node server",
+    "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently -n 'server,client' -c 'red,green' \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "server:prod": "NODE_ENV=production node server.js",
+    "client-build": "npm run build --prefix client",
+    "test": "npm run client-build && npm run server:prod"
   },
   "author": "Ralph Kilian <ralphakilian@gmail.com>",
   "license": "MIT",
