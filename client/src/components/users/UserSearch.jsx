@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import AlertContext from '../../context/AlertContext'
 import GithubContext from '../../context/GithubContext'
 import { searchUsers } from '../../context/GithubActions'
 import {
@@ -11,27 +12,27 @@ import {
   Image,
 } from 'react-bootstrap'
 import Banner from '../../assets/images/banner.jpg'
+import Alert from '../layout/Alert'
 import styles from './styles/usersearch.module.css'
 
 const UserSearch = () => {
   const [text, setText] = useState('')
-  const [msg, setMsg] = useState('')
 
   const { users, dispatch } = useContext(GithubContext)
-
+  const { setAlert } = useContext(AlertContext)
 
   const handleChange = (e) => setText(e.target.value)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!text) {
-      setMsg('Please enter something...')
-      setTimeout(() => {
-        setMsg('')
-      }, 2000)
+      setAlert('Please enter something', 'error')
     } else {
       dispatch({ type: 'SET_LOADING' })
       const { users, pages } = await searchUsers(text)
+      if (text && users?.length < 1) {
+        setAlert('No matches found...', 'info')
+      }
       dispatch({ type: 'GET_USERS', payload: { users, pages } })
       setText('')
     }
@@ -58,13 +59,12 @@ const UserSearch = () => {
               >
                 Search
               </Button>
-              <Container className={styles.errorStyle}>{msg}</Container>
             </InputGroup>
           </Form>
+          <Alert />
         </Col>
         {users && users.length > 0 && (
           <Col xs={12} s={1} md={1} lg={1} xl={1} xxl={1}>
-            <Container></Container>
             <Button
               className={styles.clearBtn}
               size="lg"
@@ -75,7 +75,7 @@ const UserSearch = () => {
           </Col>
         )}
       </Row>
-      {users && users.length < 1 && (
+      {users?.length < 1 && (
         <Image fluid rounded src={Banner} alt={'banner image'} />
       )}
     </Container>

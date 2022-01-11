@@ -4,15 +4,15 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App'
 import { GithubProvider } from './context/GithubContext'
-
+import { AlertProvider } from './context/AlertContext'
 
 ReactDOM.render(
   <React.StrictMode>
- 
-      <GithubProvider>
+    <GithubProvider>
+      <AlertProvider>
         <App />
-      </GithubProvider>
-
+      </AlertProvider>
+    </GithubProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
