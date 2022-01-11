@@ -10,10 +10,10 @@ export const searchUsers = async (text) => {
   return { users, pages }
 }
 
-export const getUsersFromLink = async (url) => {
+export const getUsersFromLink = async (link) => {
   const response = await axios.post('/api/users-link', {
     headers: { 'Content-Type': 'application/json' },
-    url,
+    link,
   })
   const users = response.data.users
   const pages = response.data.pages
