@@ -1,26 +1,26 @@
 import { useContext } from 'react'
 import { ButtonGroup, Button, Container } from 'react-bootstrap'
 import GithubContext from '../../context/GithubContext'
-import AuthContext from '../../context/AuthContext'
+
 import { getUsersFromLink } from '../../context/GithubActions'
 import styles from './styles/pagination.module.css'
 import { scrollToTop } from '../../utils/util'
 
 const Pagination = () => {
   const { pages, dispatch } = useContext(GithubContext)
-  const token = useContext(AuthContext)
+
 
   const handlePrevClick = async () => {
     dispatch({ type: 'SET_LOADING' })
     scrollToTop()
-    const { users, pages: p } = await getUsersFromLink(pages.prev.link, token)
+    const { users, pages: p } = await getUsersFromLink(pages.prev.link)
     dispatch({ type: 'GET_USERS', payload: { users, pages: p } })
   }
 
   const handleNextClick = async () => {
     dispatch({ type: 'SET_LOADING' })
     scrollToTop()
-    const { users, pages: p } = await getUsersFromLink(pages.next.link, token)
+    const { users, pages: p } = await getUsersFromLink(pages.next.link)
     dispatch({ type: 'GET_USERS', payload: { users, pages: p } })
   }
 

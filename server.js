@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { router } from './api/routes.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -15,13 +16,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-const router = express.Router()
-app.use(
-  '/api/token',
-  router.get('/', (req, res) => {
-    res.json({ token: process.env.ACCESS_TOKEN })
-  })
-)
+app.use('/api', router)
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
 

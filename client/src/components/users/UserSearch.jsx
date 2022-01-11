@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react'
 import GithubContext from '../../context/GithubContext'
-import AuthContext from '../../context/AuthContext'
 import { searchUsers } from '../../context/GithubActions'
 import {
   InputGroup,
@@ -19,7 +18,7 @@ const UserSearch = () => {
   const [msg, setMsg] = useState('')
 
   const { users, dispatch } = useContext(GithubContext)
-  const token = useContext(AuthContext)
+
 
   const handleChange = (e) => setText(e.target.value)
 
@@ -32,7 +31,7 @@ const UserSearch = () => {
       }, 2000)
     } else {
       dispatch({ type: 'SET_LOADING' })
-      const { users, pages } = await searchUsers(text, token)
+      const { users, pages } = await searchUsers(text)
       dispatch({ type: 'GET_USERS', payload: { users, pages } })
       setText('')
     }
