@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import { fileURLToPath } from 'url'
-import { dirname } from 'path'
+import path, { dirname } from 'path'
 import { router } from './api/routes.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -19,7 +19,7 @@ app.use(cors())
 app.use('/api', router)
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
+  app.use(express.static(path.resolve(__dirname, 'client', 'build')))
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
