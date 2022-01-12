@@ -21,7 +21,7 @@ router.post('/users', async (req, res) => {
   axios
     .get(`${process.env.GITHUB_URL}/search/users?${params}`, { headers })
     .then((response) => {
-      const [users, pages] = [[], []]
+      let [users, pages] = [[], []]
       if (response.data.total_count !== 0) {
         users = response.data.items
         pages = parsePageLinks(response.headers.link)
@@ -36,8 +36,11 @@ router.post('/users-link', async (req, res) => {
   axios
     .get(url, { headers })
     .then((response) => {
-      const users = response.data.items
-      const pages = parsePageLinks(response.headers.link)
+      let [users, pages] = [[], []]
+      if (response.data.total_count !== 0) {
+        users = response.data.items
+        pages = parsePageLinks(response.headers.link)
+      }
       res.status(200).send({ users, pages })
     })
     .catch((err) => res.send({ err, message: err.message }))
