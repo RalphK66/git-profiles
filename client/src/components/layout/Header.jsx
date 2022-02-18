@@ -8,7 +8,7 @@ const Header = () => {
     <Navbar variant="dark" expand="md" className="header">
       <Container>
         <Navbar.Brand className={styles.navBrand}>
-          Github <VscEye color="red" size='48px' /> Profiles
+          GitHub <VscEye color="red" size='48px' /> Profiles
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>

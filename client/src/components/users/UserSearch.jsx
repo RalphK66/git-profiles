@@ -76,7 +76,7 @@ const UserSearch = () => {
         )}
       </Row>
       {users?.length < 1 && (
-        <Image fluid rounded src={Banner} alt={'banner image'} />
+        <Image fluid rounded src={Banner} alt={'banner image'} loading="lazy" />
       )}
     </Container>
   )
